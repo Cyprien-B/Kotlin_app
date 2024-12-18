@@ -10,7 +10,7 @@ L'utilisateur peut afficher la liste des personnages.
 L'utilisateur peut afficher le détail d'un personnage (mock de l'appel à l'API pour récupérer les détails d'un personnage).
 Gestion du dark theme.
 Gestion de la langue (en).
-
+```
 ControleMathieu/
 ├── app/
 │   ├── src/
@@ -32,5 +32,5 @@ ControleMathieu/
 │   │   │   ├── res/
 ├── build.gradle
 └── settings.gradle
-
+```
 Pour les choix technique il on été surtout basé sur ce qui marche et sur ce qui respectait le cachier des charges du client
