@@ -2,7 +2,7 @@ package com.example.controlemathieu.ui.screens.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.controlemathieu.domain.Mocked.getMockedCharacters
+import com.example.controlemathieu.data.Mocked.getMockedCharacters
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

@@ -1,4 +1,4 @@
-package com.example.controlemathieu.domain.Mocked
+package com.example.controlemathieu.data.Mocked
 
 import com.example.controlemathieu.domain.models.Character
 import com.example.controlemathieu.domain.models.Location
