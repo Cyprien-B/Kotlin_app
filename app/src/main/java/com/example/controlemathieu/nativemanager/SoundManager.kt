@@ -8,7 +8,9 @@ import android.media.MediaPlayer
 import androidx.annotation.RawRes
 import com.example.controlemathieu.R
 
-
+/**
+ * Fonction qui permet de manipuler le son du devise
+ */
 class SoundManager(private val context: Context) {
     private var mediaPlayer: MediaPlayer? = null
     private val audioManager: AudioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager

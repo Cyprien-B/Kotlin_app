@@ -12,6 +12,7 @@ import androidx.navigation.NavController
 import com.example.controlemathieu.R
 import com.example.controlemathieu.nativemanager.SoundManager
 import com.example.controlemathieu.nativemanager.VibrationManager
+import com.example.controlemathieu.ui.component.CustomBackButton
 import com.example.controlemathieu.ui.screens.detail.CharacterDetailViewModel
 
 @Composable
@@ -20,7 +21,7 @@ fun CharacterDetailScreen(
     characterId: String,
     viewModel: CharacterDetailViewModel = viewModel()
 ) {
-    val context = LocalContext.current
+    //val context = LocalContext.current
     val character by viewModel.characterState.collectAsState()
 
     LaunchedEffect(characterId) {
@@ -88,14 +89,8 @@ fun CharacterDetailScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            Button(
-                onClick = {
-                    navController.navigate("characters_list")
-                    SoundManager(context).playButtonClickedSound()
-                    VibrationManager(context).vibrateOnButtonClicked()
-                }
-            ) {
-                Text(text = stringResource(id = R.string.back_to_list))
+            CustomBackButton {
+                navController.navigate("characters_list")
             }
         }
     } else {

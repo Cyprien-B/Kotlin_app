@@ -1,7 +1,6 @@
 package com.example.controlemathieu
 
 import CharacterDetailScreen
-import CharacterListScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -10,6 +9,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.controlemathieu.ui.screens.list.CharacterListScreen
 import com.example.controlemathieu.ui.theme.ControleMathieuTheme
 
 class MainActivity : ComponentActivity() {
