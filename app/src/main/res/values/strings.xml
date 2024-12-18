@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ControleMathieu</string>
+    <string name="title_page_acceuil">Bienvenue</string>
+    <string name="title_page_detail">Detail du personnage</string>
+</resources>
