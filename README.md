@@ -12,16 +12,17 @@ L'application utilise les données de l'API Rick and Morty, mais celles-ci sont 
 - Gestion de la langue (en).
 
 ## Architecture du projet 
-Au niveau de l'architecture, on a essayé de séparer au maximum la manipulation des données des écrans
+Au niveau de l'architecture, j'ai separer les donnée dans data, la manipulation de celle ci dans domain, les vue dans ui et la logique des vues dans le viewmodel
 ```
 ControleMathieu/
 ├── app/
 │   ├── src/
 │   │   ├── main/
 │   │   │   ├── java/com/example/controlemathieu/
-│   │   │   │   ├── domain/
+│   │   │   │   ├── data/
 │   │   │   │   │   ├── Mocked/
 │   │   │   │   │   │── api
+│   │   │   │   ├── domain/
 │   │   │   │   │   ├── models/
 │   │   │   │   │   └── repositories/
 │   │   │   │   ├── nativeManager/
