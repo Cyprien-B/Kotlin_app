@@ -6,8 +6,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.platform.LocalContext
 import com.example.controlemathieu.R
-import com.example.controlemathieu.nativemanager.SoundManager
 import com.example.controlemathieu.nativemanager.VibrationManager
+import com.example.controlemathieu.nativemanager.playButtonClickedSound
 
 @Composable
 fun CustomBackButton(onClick: () -> Unit) {
@@ -16,7 +16,7 @@ fun CustomBackButton(onClick: () -> Unit) {
     Button(
         onClick = {
             onClick()
-            SoundManager(context).playButtonClickedSound()
+            context.playButtonClickedSound()
             VibrationManager(context).vibrateOnButtonClicked()
         }
     ) {

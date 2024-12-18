@@ -18,8 +18,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.controlemathieu.R
-import com.example.controlemathieu.nativemanager.SoundManager
 import com.example.controlemathieu.nativemanager.VibrationManager
+import com.example.controlemathieu.nativemanager.playButtonClickedSound
 
 @Composable
 fun CharacterListScreen(
@@ -54,7 +54,7 @@ fun CharacterListScreen(
                     character = character,
                     onClick = {
                         navController.navigate("characters_detail/${character.id}")
-                        SoundManager(context).playButtonClickedSound()
+                        context.playButtonClickedSound()
                         VibrationManager(context).vibrateOnButtonClicked()
                     }
                 )

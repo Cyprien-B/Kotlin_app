@@ -9,37 +9,47 @@ import androidx.annotation.RawRes
 import com.example.controlemathieu.R
 
 /**
- * Fonction qui permet de manipuler le son du devise
+ * Extension de la classe Context pour jouer un son de manière simple et réutilisable.
  */
-class SoundManager(private val context: Context) {
-    private var mediaPlayer: MediaPlayer? = null
-    private val audioManager: AudioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
-    private val focusRequest: AudioFocusRequest
-    init {
-        val audioAttributes = AudioAttributes.Builder()
-            .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
-            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-            .build()
-        focusRequest = AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK)
-            .setAudioAttributes(audioAttributes)
-            .setAcceptsDelayedFocusGain(false)
-            .setWillPauseWhenDucked(false)
-            .build()
-    }
-    private fun playSound(@RawRes resId: Int) {
-        mediaPlayer?.release()
-        mediaPlayer = MediaPlayer.create(context, resId)
-        mediaPlayer?.setOnCompletionListener {
+
+/**
+ * Fonction d'extension pour jouer un son spécifique.
+ * @param resId Ressource du son à jouer (exemple : R.raw.ding).
+ */
+fun Context.playSound(@RawRes resId: Int) {
+    val audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+
+    // Configure les attributs audio pour le type de sonification.
+    val audioAttributes = AudioAttributes.Builder()
+        .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
+        .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+        .build()
+
+    // Demande d'accès audio avec les règles définies.
+    val focusRequest = AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK)
+        .setAudioAttributes(audioAttributes)
+        .setAcceptsDelayedFocusGain(false)
+        .setWillPauseWhenDucked(false)
+        .build()
+
+    // Prépare le MediaPlayer.
+    val mediaPlayer = MediaPlayer.create(this, resId).apply {
+        setOnCompletionListener {
             audioManager.abandonAudioFocusRequest(focusRequest)
-        }
-        val result = audioManager.requestAudioFocus(focusRequest)
-        if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
-            mediaPlayer?.start()
+            release() // Libération des ressources après lecture.
         }
     }
 
-    /**
-     * Fonction pour jouer un son
-     */
-    fun playButtonClickedSound() = playSound(R.raw.ding)
+    // Demande le focus audio et joue le son si accordé.
+    val result = audioManager.requestAudioFocus(focusRequest)
+    if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+        mediaPlayer.start()
+    }
+}
+
+/**
+ * Fonction d'extension dédiée pour jouer un son de clic de bouton.
+ */
+fun Context.playButtonClickedSound() {
+    playSound(R.raw.ding)
 }

@@ -10,7 +10,6 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.controlemathieu.R
-import com.example.controlemathieu.nativemanager.SoundManager
 import com.example.controlemathieu.nativemanager.VibrationManager
 import com.example.controlemathieu.ui.component.CustomBackButton
 import com.example.controlemathieu.ui.screens.detail.CharacterDetailViewModel
