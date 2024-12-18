@@ -50,7 +50,7 @@ fun CharacterListScreen(navController: NavController) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(colorResource(id = R.color.purple_500))
+                        .background(colorResource(id = R.color.purple_500)) // ici j'utilise la couleur pour le theme
                         .padding(8.dp)
                         .clickable {
                             // Naviguer vers CharacterDetailScreen en passant l'ID du personnage

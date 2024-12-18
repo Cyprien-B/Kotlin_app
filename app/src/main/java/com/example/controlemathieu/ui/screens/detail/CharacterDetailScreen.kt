@@ -24,73 +24,71 @@ fun CharacterDetailScreen(navController: NavController)
     val character = getCharacterFromId()
 
     if (character != null) {
+    // Titre de la page
+    Text(
+        text = stringResource(id = R.string.title_page_detail),
+        modifier = Modifier.padding(bottom = 16.dp)
+    )
 
-        if (character != null) {
-        Text(
-            text = stringResource(id = R.string.title_page_detail)
-        )}
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp)
-                .verticalScroll(rememberScrollState())
-                .clickable {
-                    // Naviguer vers CharacterDetailScreen en passant l'ID du personnage
-                    navController.navigate("characters_list")
-                    SoundManager(context).playButtonClickedSound()
-                    VibrationManager(context).vibrateOnButtonClicked()
-                }
-        ) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+            .verticalScroll(rememberScrollState())
+            .clickable {
+                // Naviguer vers CharacterDetailScreen en passant l'ID du personnage
+                navController.navigate("characters_list")
+                SoundManager(context).playButtonClickedSound()
+                VibrationManager(context).vibrateOnButtonClicked()
+            }
+    ) {
+        // Affichage des informations du personnage
 
-            // Affichage des informations du personnage
             Text(
                 text = character.name,
                 style = MaterialTheme.typography.headlineMedium,
                 modifier = Modifier.padding(bottom = 8.dp)
             )
-            Text(
-                text = "Status: ${character.status}",
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(bottom = 4.dp)
-            )
-            Text(
-                text = "Species: ${character.species}",
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(bottom = 4.dp)
-            )
-            Text(
-                text = "Gender: ${character.gender}",
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(bottom = 4.dp)
-            )
-            Text(
-                text = "Origin: ${character.origin.name}",
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(bottom = 4.dp)
-            )
-            Text(
-                text = "Location: ${character.location.name}",
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(bottom = 4.dp)
-            )
 
-            // Affichage des épisodes
-            Text(
-                text = "Appears in episodes:",
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(bottom = 8.dp)
-            )
+        Text(
+            text = "Status: ${character.status}",
+            style = MaterialTheme.typography.bodyLarge,
+            modifier = Modifier.padding(bottom = 4.dp)
+        )
+        Text(
+            text = "Species: ${character.species}",
+            style = MaterialTheme.typography.bodyLarge,
+            modifier = Modifier.padding(bottom = 4.dp)
+        )
+        Text(
+            text = "Gender: ${character.gender}",
+            style = MaterialTheme.typography.bodyLarge,
+            modifier = Modifier.padding(bottom = 4.dp)
+        )
+        Text(
+            text = "Origin: ${character.origin.name}",
+            style = MaterialTheme.typography.bodyLarge,
+            modifier = Modifier.padding(bottom = 4.dp)
+        )
+        Text(
+            text = "Location: ${character.location.name}",
+            style = MaterialTheme.typography.bodyLarge,
+            modifier = Modifier.padding(bottom = 4.dp)
+        )
 
-            character.episode.forEachIndexed { index, episode ->
-                Text(
-                    text = "Episode ${index + 1}: $episode",
-                    style = MaterialTheme.typography.bodySmall,
-                    modifier = Modifier.padding(bottom = 4.dp)
-                )
-            }
+        // Affichage des épisodes
+        Text(
+            text = "Appears in episodes:",
+            style = MaterialTheme.typography.bodyLarge,
+            modifier = Modifier.padding(bottom = 8.dp)
+        )
+
+        character.episode.forEachIndexed { index, episode ->
+            Text(
+                text = "Episode ${index + 1}: $episode",
+                style = MaterialTheme.typography.bodySmall,
+                modifier = Modifier.padding(bottom = 4.dp)
+            )
         }
-    } else {
-        // Si les données du personnage ne sont pas disponibles
-        Text(text = "Character not found", style = MaterialTheme.typography.headlineSmall)
-    }
+    }}
 }
