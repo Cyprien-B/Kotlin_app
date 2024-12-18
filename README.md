@@ -10,6 +10,9 @@ L'application utilise les données de l'API Rick and Morty, mais celles-ci sont 
 - L'utilisateur peut afficher le détail d'un personnage (mock de l'appel à l'API pour récupérer les détails d'un personnage).
 - Gestion du dark theme.
 - Gestion de la langue (en).
+
+## Architecture du projet 
+Au niveau de l'architecture, on a essayé de séparer au maximum la manipulation des données des écrans
 ```
 ControleMathieu/
 ├── app/
@@ -33,4 +36,6 @@ ControleMathieu/
 ├── build.gradle
 └── settings.gradle
 ```
-Pour les choix technique il on été surtout basé sur ce qui marche et sur ce qui respectait le cachier des charges du client
+
+
+Pour les choix techniques, je suis parti sur Kotlin car c'est le langage pour applications mobiles que je maîtrise.
