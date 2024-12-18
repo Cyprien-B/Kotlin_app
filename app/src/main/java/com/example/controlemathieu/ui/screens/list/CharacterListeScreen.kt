@@ -54,7 +54,7 @@ fun CharacterListScreen(navController: NavController) {
                         .padding(8.dp)
                         .clickable {
                             // Naviguer vers CharacterDetailScreen en passant l'ID du personnage
-                            navController.navigate("characters_detail")
+                            navController.navigate("characters_detail/${character.id}")
                             SoundManager(context).playButtonClickedSound()
                             VibrationManager(context).vibrateOnButtonClicked()
                         }

@@ -1,5 +1,6 @@
 package com.example.controlemathieu
 
+import CharacterDetailScreen
 import CharacterListScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,7 +10,6 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.controlemathieu.ui.screens.detail.CharacterDetailScreen
 import com.example.controlemathieu.ui.theme.ControleMathieuTheme
 
 class MainActivity : ComponentActivity() {
@@ -30,12 +30,11 @@ class MainActivity : ComponentActivity() {
                             navController = navController
                         )
                     }
-
                     composable(
-                        route = "characters_detail"
-
-                    ) {
-                        CharacterDetailScreen(navController = navController)
+                        route = "characters_detail/{characterId}"
+                    ) { backStackEntry ->
+                        val characterId = backStackEntry.arguments?.getString("characterId") ?: ""
+                        CharacterDetailScreen(navController = navController, characterId = characterId)
                     }
                 }
             }
